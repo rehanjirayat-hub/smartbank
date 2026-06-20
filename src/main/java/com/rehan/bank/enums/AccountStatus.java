@@ -1,6 +1,6 @@
 package com.rehan.bank.enums;
 
-public  enum AccountStatus{
+public enum AccountStatus {
     ACTIVE,
     CLOSED,
     BLOCKED

@@ -4,23 +4,18 @@ import com.rehan.bank.enums.AccountType;
 import com.rehan.bank.exception.AccountNotFoundException;
 import com.rehan.bank.exception.InsufficientBalanceException;
 import com.rehan.bank.exception.InvalidAmountException;
-import com.rehan.bank.model.Account;
 import com.rehan.bank.model.CurrentAccount;
 import com.rehan.bank.model.Customer;
 import com.rehan.bank.model.SavingsAccount;
 import com.rehan.bank.repository.AccountRepository;
 
-import javax.crypto.Cipher;
-
-import static com.rehan.bank.enums.AccountType.SAVINGS;
-
 public class SmartBankApplication {
     public static void main(String[] args) {
         System.out.println("Welcome to SmartBank");
-        Customer c = new Customer(1,"rehan","rehanjiorayat@gmail.com","4334343","maruti nagar","343442344","746833");
+        Customer c = new Customer(1, "rehan", "rehanjiorayat@gmail.com", "4334343", "maruti nagar", "343442344", "746833");
 //
 //        System.out.println(c);
-        SavingsAccount Saving = new SavingsAccount(1001,5000, AccountType.SAVINGS,1);
+        SavingsAccount Saving = new SavingsAccount(1001, 5000, AccountType.SAVINGS, 1);
 //        System.out.println(a.getBalance());
 
 //        System.out.println("Before Withdraw :" + Saving.getBalance());

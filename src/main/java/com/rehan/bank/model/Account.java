@@ -91,8 +91,8 @@ public abstract class Account {
 
 
     public void deposit(double amount)
-            throws InvalidAmountException{
-        if (amount <= 0){
+            throws InvalidAmountException {
+        if (amount <= 0) {
             throw new InvalidAmountException("Invalid Amount");
         }
         setBalance(getBalance() + amount);

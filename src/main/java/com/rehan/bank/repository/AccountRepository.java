@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AccountRepository {
     private ArrayList<Account> accounts = new ArrayList<>();
 
-    public boolean addAccount(Account account){
+    public boolean addAccount(Account account) {
         return accounts.add(account);
     }
 
@@ -24,6 +24,7 @@ public class AccountRepository {
                 "Account Number " + accountNumber + " not found"
         );
     }
+
     public ArrayList<Account> getAllAccounts() {
         return accounts;
     }

@@ -44,23 +44,45 @@ public class SmartBankApplication {
         repository.addAccount(Saving);
         repository.addAccount(currentAccount);
 
-        for (Account account : repository.getAllAccounts()) {
-            System.out.println(account);
-        }
+//        for (Account account : repository.getAllAccounts()) {
+//            System.out.println(account);
+//        }
+//        try {
+//            Account account =
+//                    repository.findAccountByAccountNumber(1001);
+//
+//            account.deposit(1000);
+//            System.out.println(account);
+//            account.getBalance();
+//            System.out.println("Balance : " + account.getBalance());
+//
+//        } catch (AccountNotFoundException e) {
+//            System.out.println(e.getMessage());
+//        } catch (InvalidAmountException e) {
+//            System.out.println("Invalid Amount");
+//        }
+
+        System.out.println("Savings Balance : " + Saving.getBalance());
+        System.out.println("Current Balance : " + currentAccount.getBalance());
+
         try {
-            Account account =
-                    repository.findAccountByAccountNumber(1001);
 
-            account.deposit(1000);
-            System.out.println(account);
-            account.getBalance();
-            System.out.println("Balance : " + account.getBalance());
+            repository.transferMoney(
+                    1001,
+                    2001,
+                    2000
+            );
 
-        } catch (AccountNotFoundException e) {
+        } catch (AccountNotFoundException |
+                 InvalidAmountException |
+                 InsufficientBalanceException e) {
+
             System.out.println(e.getMessage());
-        } catch (InvalidAmountException e) {
-            System.out.println("Invalid Amount");
         }
+
+        System.out.println("Savings Balance : " + Saving.getBalance());
+        System.out.println("Current Balance : " + currentAccount.getBalance());
+
     }
 
 

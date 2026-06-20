@@ -7,6 +7,8 @@ import com.rehan.bank.model.Account;
 import com.rehan.bank.repository.AccountRepository;
 import com.rehan.bank.service.AccountService;
 
+import java.util.List;
+
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
@@ -44,5 +46,10 @@ public class AccountServiceImpl implements AccountService {
         Account toAccount = findAccountByAccountNumber(toAccountNumber);
         fromAccount.withdraw(amount);
         toAccount.deposit(amount);
+    }
+
+    @Override
+    public List<Account> getAllAccounts() {
+        return accountRepository.getAllAccounts();
     }
 }

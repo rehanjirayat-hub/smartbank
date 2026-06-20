@@ -12,11 +12,19 @@ public class SavingsAccount extends Account  {
         super(accountNumber, balance, accountType, customerId);
     }
 
+
+
     @Override
     public void withdraw(double amount) throws InvalidAmountException, InsufficientBalanceException {
 
         if (amount <= 0){
             throw new InvalidAmountException("Invalid Amount");
         }
+        if (getBalance() - amount < MINIMUM_BALANCE){
+            throw new InsufficientBalanceException("Insufficient Balance");
+        }
+        setBalance(getBalance() - amount);
+
     }
+
 }

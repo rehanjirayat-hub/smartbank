@@ -90,4 +90,11 @@ public abstract class Account {
     public abstract void withdraw(double amount) throws InvalidAmountException, InsufficientBalanceException;
 
 
+    public void deposit(double amount)
+            throws InvalidAmountException{
+        if (amount <= 0){
+            throw new InvalidAmountException("Invalid Amount");
+        }
+        setBalance(getBalance() + amount);
+    }
 }

@@ -1,5 +1,6 @@
 package com.rehan.bank.service.impl;
 
+import com.rehan.bank.enums.AccountType;
 import com.rehan.bank.exception.AccountNotFoundException;
 import com.rehan.bank.exception.InsufficientBalanceException;
 import com.rehan.bank.exception.InvalidAmountException;
@@ -8,6 +9,8 @@ import com.rehan.bank.repository.AccountRepository;
 import com.rehan.bank.service.AccountService;
 
 import java.util.List;
+
+import static com.rehan.bank.enums.AccountType.SAVINGS;
 
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
@@ -51,5 +54,38 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> getAllAccounts() {
         return accountRepository.getAllAccounts();
+    }
+
+    @Override
+    public long countAccounts() {
+        long countAccounts;
+        countAccounts = accountRepository.getAllAccounts()
+                .stream()
+                .count();
+        return countAccounts;
+    }
+
+    @Override
+    public List<Account> getSavingsAccounts() {
+         return accountRepository.getAllAccounts()
+                .stream()
+                .filter(a -> a.getAccountType() == AccountType.SAVINGS)
+                .toList();
+    }
+
+    @Override
+    public List<Account> getCurrentAccounts() {
+        return accountRepository.getAllAccounts()
+                .stream()
+                .filter(a -> a.getAccountType() == AccountType.CURRENT)
+                .toList();
+    }
+
+    @Override
+    public double getTotalBankBalance() {
+        return accountRepository.getAllAccounts()
+                .stream()
+                .map(Account::getBalance)
+                .reduce(0.0, (a, b) -> a + b);
     }
 }

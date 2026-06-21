@@ -167,6 +167,23 @@ public class SmartBankApplication {
             System.out.println(account);
         }
 
+        System.out.println("Savings Accounts:");
+
+        for (Account account : service.getSavingsAccounts()) {
+            System.out.println(account);
+        }
+
+        System.out.println("Current Accounts:");
+
+        for (Account account : service.getCurrentAccounts()) {
+            System.out.println(account);
+        }
+
+        System.out.println(
+                "Total Bank Balance : "
+                        + service.getTotalBankBalance()
+        );
+
         try {
             service.deposit(1001, 1000);
         } catch (AccountNotFoundException | InvalidAmountException e) {

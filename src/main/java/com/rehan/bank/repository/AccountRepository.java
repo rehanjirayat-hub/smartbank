@@ -4,15 +4,16 @@ import com.rehan.bank.exception.AccountNotFoundException;
 import com.rehan.bank.exception.InsufficientBalanceException;
 import com.rehan.bank.exception.InvalidAmountException;
 import com.rehan.bank.model.Account;
-
 import java.util.ArrayList;
 
 public class AccountRepository {
     private ArrayList<Account> accounts = new ArrayList<>();
 
+
     public boolean addAccount(Account account) {
         return accounts.add(account);
     }
+
 
     public Account findAccountByAccountNumber(long accountNumber) throws AccountNotFoundException {
         for (Account account : accounts) {
@@ -30,6 +31,7 @@ public class AccountRepository {
     }
 
 
+
     public void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) throws AccountNotFoundException, InvalidAmountException, InsufficientBalanceException {
 
 
@@ -44,5 +46,7 @@ public class AccountRepository {
 
         toAccount.deposit(amount);
 
+
     }
+
 }

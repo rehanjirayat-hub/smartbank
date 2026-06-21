@@ -8,9 +8,9 @@ import com.rehan.bank.model.Account;
 import com.rehan.bank.repository.AccountRepository;
 import com.rehan.bank.service.AccountService;
 
+import java.util.Comparator;
 import java.util.List;
-
-import static com.rehan.bank.enums.AccountType.SAVINGS;
+import java.util.Optional;
 
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
@@ -88,4 +88,34 @@ public class AccountServiceImpl implements AccountService {
                 .map(Account::getBalance)
                 .reduce(0.0, (a, b) -> a + b);
     }
+
+    @Override
+    public List<Account> getAccountsWithBalanceGreaterThan(double amount) {
+        return accountRepository.getAllAccounts()
+                .stream()
+                .filter(account -> account.getBalance() > amount)
+                .toList();
+    }
+
+    @Override
+    public List<Account> getAccountsSortedByBalance() {
+        return accountRepository.getAllAccounts()
+                .stream()
+                .sorted(Comparator.comparing(Account::getBalance))
+                .toList();
+    }
+
+    @Override
+    public Optional<Account> getAccountWithHighestBalance() {
+        return accountRepository.getAllAccounts()
+                .stream()
+                .max(Comparator.comparing(Account::getBalance));
+    }
+
+    @Override
+    public Optional<Account> getAccountWithLowestBalance() {
+        return accountRepository.getAllAccounts()
+                .stream().min(Comparator.comparing(Account::getBalance));
+    }
+
 }

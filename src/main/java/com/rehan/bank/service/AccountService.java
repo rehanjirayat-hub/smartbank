@@ -5,6 +5,7 @@ import com.rehan.bank.exception.InsufficientBalanceException;
 import com.rehan.bank.exception.InvalidAmountException;
 import com.rehan.bank.model.Account;
 import java.util.List;
+import java.util.Optional;
 
 public interface AccountService {
     boolean addAccount(Account account);
@@ -25,4 +26,8 @@ public interface AccountService {
     List<Account> getSavingsAccounts();
     List<Account> getCurrentAccounts();
     double getTotalBankBalance();
+    List<Account> getAccountsWithBalanceGreaterThan(double amount);
+    List<Account> getAccountsSortedByBalance();
+    Optional<Account> getAccountWithHighestBalance();
+    Optional<Account> getAccountWithLowestBalance();
 }

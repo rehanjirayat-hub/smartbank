@@ -12,6 +12,8 @@ import com.rehan.bank.repository.AccountRepository;
 import com.rehan.bank.service.AccountService;
 import com.rehan.bank.service.impl.AccountServiceImpl;
 
+import java.util.Optional;
+
 public class SmartBankApplication {
     public static void main(String[] args) {
         System.out.println("Welcome to SmartBank");
@@ -183,6 +185,27 @@ public class SmartBankApplication {
                 "Total Bank Balance : "
                         + service.getTotalBankBalance()
         );
+
+        System.out.println("Accounts With Balance Greater Than 5000:");
+
+        for (Account account : service.getAccountsWithBalanceGreaterThan(5000)) {
+            System.out.println(account);
+        }
+
+        System.out.println("Accounts Sorted By Balance :");
+        for (Account account : service.getAccountsSortedByBalance()) {
+            System.out.println(account);
+        }
+
+        Optional<Account> account1 =
+                service.getAccountWithHighestBalance();
+
+        account1.ifPresent(System.out::println);
+
+        Optional<Account> account2 =
+                service.getAccountWithLowestBalance();
+
+        account2.ifPresent(System.out::println);
 
         try {
             service.deposit(1001, 1000);

@@ -5,29 +5,40 @@ import com.rehan.bank.exception.InsufficientBalanceException;
 import com.rehan.bank.exception.InvalidAmountException;
 import com.rehan.bank.model.Account;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AccountRepository {
-    private ArrayList<Account> accounts = new ArrayList<>();
+
+    private Map<Long, Account> accounts = new HashMap<>();
 
 
     public boolean addAccount(Account account) {
-        return accounts.add(account);
+        accounts.put(
+                account.getAccountNumber(),
+                account
+        );
+        return true;
     }
 
 
-    public Account findAccountByAccountNumber(long accountNumber) throws AccountNotFoundException {
-        for (Account account : accounts) {
-            if ((account.getAccountNumber() == accountNumber)) {
-                return account;
-            }
+    public Account findAccountByAccountNumber(long accountNumber)
+            throws AccountNotFoundException {
+
+        Account account = accounts.get(accountNumber);
+
+        if (account != null) {
+            return account;
         }
+
         throw new AccountNotFoundException(
                 "Account Number " + accountNumber + " not found"
         );
     }
 
-    public ArrayList<Account> getAllAccounts() {
-        return accounts;
+    public List<Account> getAllAccounts() {
+        return new ArrayList<>(accounts.values());
     }
 
 

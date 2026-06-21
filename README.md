@@ -1,30 +1,29 @@
-# smartbank
-
 # SmartBank
 
-SmartBank is a Core Java banking application developed to practice Object-Oriented Programming (OOP), Collections Framework, Exception Handling, Repository Pattern, Service Layer Architecture, and Git/GitHub workflows.
+SmartBank is a Java-based banking management system developed using Core Java concepts. The project follows a layered architecture and demonstrates Object-Oriented Programming (OOP), Exception Handling, Collections Framework, Streams API, JUnit 5 Testing, Maven, and Git.
 
 ## Features
 
-* Create and manage bank accounts
-* Savings Account support
-* Current Account support
-* Deposit money
-* Withdraw money
-* Transfer money between accounts
-* Search account by account number
-* View all accounts
-* Custom exception handling
-* Repository Layer implementation
-* Service Layer implementation
+* Add Account
+* Deposit Money
+* Withdraw Money
+* Transfer Money Between Accounts
+* View All Accounts
+* Search Account By Number
+* Count Total Accounts
+* View Savings Accounts
+* View Current Accounts
+* View Total Bank Balance
+* View Highest Balance Account
+* View Lowest Balance Account
 
 ## Technologies Used
 
 * Java 21
 * Maven
+* JUnit 5
+* Git & GitHub
 * IntelliJ IDEA
-* Git
-* GitHub
 
 ## Project Structure
 
@@ -34,62 +33,53 @@ src
 │   └── java
 │       └── com.rehan.bank
 │           ├── model
-│           ├── enums
-│           ├── exception
 │           ├── repository
 │           ├── service
 │           ├── service.impl
+│           ├── exception
+│           ├── enums
 │           └── main
+│
+└── test
+    └── java
+        └── com.rehan.bank.service.impl
 ```
 
-## OOP Concepts Implemented
+## Key Concepts Implemented
 
-* Encapsulation
+* Object-Oriented Programming (OOP)
 * Inheritance
 * Abstraction
 * Polymorphism
-* Method Overriding
-* Constructor Injection
+* Exception Handling
+* Collections (HashMap)
+* Java Streams API
+* Lambda Expressions
+* Optional Class
+* Layered Architecture
+* Unit Testing with JUnit 5
 
-## Custom Exceptions
+## Unit Tests
 
-* InvalidAmountException
-* InsufficientBalanceException
-* AccountNotFoundException
+The project includes JUnit 5 test cases for:
 
-## Current Functionalities
-
-### Deposit
-
-Allows users to deposit money into an account with validation.
-
-### Withdraw
-
-Allows users to withdraw money while maintaining minimum balance rules.
-
-### Transfer Money
-
-Transfers funds from one account to another using service-layer business logic.
-
-### Account Search
-
-Searches accounts using account number and throws custom exceptions when accounts are not found.
+* Deposit Operation
+* Withdraw Operation
+* Money Transfer Operation
+* Insufficient Balance Exception
+* Invalid Amount Exception
+* Account Not Found Exception
 
 ## Future Enhancements
 
-* Lambda Expressions
-* Streams API
-* JUnit 5 Testing
-* HashMap-based repository
 * JDBC Integration
-* MySQL Database
-* Spring Boot REST API
-* Transaction History
-* Authentication and Authorization
+* MySQL Database Support
+* User Authentication
+* Spring Boot REST APIs
+* Web-Based User Interface
 
 ## Author
 
-Mohammed Rehan Anwarsab Jirayat
+**Mohammed Rehan Anwarsab Jirayat**
 
-GitHub: rehanjirayat-hub
-
+GitHub: RehanJirayat-hub
